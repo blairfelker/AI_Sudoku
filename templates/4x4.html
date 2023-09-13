@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>4x4 Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <h1>4x4 Sudoku Solver</h1> 
+        <p>Input a number 1-4 in any square. Leave some of them blank.</p>
+        <form action="/4x4/solve" method="POST" autocomplete="off">
+            <table>
+                {% for i in "1234" %}
+                    {% if i == "2" %}
+                        <tr class="box-bottom">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                        {% for j in "1234" %}
+                            {% if j == "2" %}
+                                <td class="box-side"><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% else %}
+                                <td><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button class="test">Solve It!</button>
+        </form>
+    </body>
+</html>

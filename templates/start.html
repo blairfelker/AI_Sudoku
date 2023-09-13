@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <h1>Sudoku Solver</h1>
+        <h2>By Blair Felker</h2>
+        <form action="/4x4" method="POST">
+            <button>4x4</button>
+        </form>
+        <form action="/6x6" method="POST">
+            <button>6x6</button>
+        </form>
+        <form action="/9x9" method="POST">
+            <button>9x9</button>
+        </form>
+        <form action="/9x9I" method="POST">
+            <button>9x9 Irregular (WIP)</button>
+        </form>
+    </body>
+</html>

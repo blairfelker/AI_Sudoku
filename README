@@ -1,0 +1,22 @@
+After installing flask via pip install, you should have most, if not all, of the modules in the requirements.txt.
+
+To run the application paste this command into your command prompt/terminal:
+Mac/Unix:
+FLASK_APP=sudoku.py flask run
+
+OR
+
+export FLASK_APP=sudoku.py
+flask run
+
+Windows:
+$env:FLASK_APP=sudoku.py
+flask run
+
+OR
+
+$env:FLASK_APP=sudoku.py
+python -m flask run
+
+The website will not be generated automatically. Go into your browser of choice and paste the link given by the program.
+Example: http://127.0.0.1:5000

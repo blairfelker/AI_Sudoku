@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>9x9 Irregular Sudoku Solver</title>
+        <h1>May not work correctly, still in progress.</h1>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        {% set numArray = [1,2,3,4,5,6,7,8,9] %}
+        {% set revealed = [] %}
+        {% for key, value in data.items() %}
+            <p>{{key}} {{value}}</p>
+            <table>
+            {% for i in numArray %}
+                <tr>
+                {% for j in numArray %}
+                    {% if "C" +i|string + j|string in groups['A'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightcoral">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightcoral">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightcoral; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightcoral"></td>
+                        {% endif %}
+                    {% elif "C" +i|string + j|string in groups['B'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightsalmon">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightsalmon">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightsalmon; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightsalmon"></td>
+                        {% endif %}
+                    {% elif "C" +i|string + j|string in groups['C'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightyellow">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightyellow">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightyellow; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightyellow"></td>
+                        {% endif %}
+                    {% elif "C" +i|string + j|string in groups['D'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightgreen">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightgreen">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightgreen; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightgreen"></td>
+                        {% endif %}    
+                    {% elif "C" +i|string + j|string in groups['E'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightcyan">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightcyan">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightcyan; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightcyan"></td>
+                        {% endif %}
+                    {% elif "C" +i|string + j|string in groups['F'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightblue">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightblue">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightblue; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightblue"></td>
+                        {% endif %}    
+                    {% elif "C" +i|string + j|string in groups['G'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: cornflowerblue">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: cornflowerblue">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: cornflowerblue; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: cornflowerblue"></td>
+                        {% endif %} 
+                    {% elif "C" +i|string + j|string in groups['H'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lavender">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lavender">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lavender; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lavender"></td>
+                        {% endif %}  
+                    {% elif "C" +i|string + j|string in groups['I'] %}
+                        {% if original[i-1][j-1] != None %}
+                            <td style="background-color: lightpink">{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td style="background-color: lightpink">{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="background-color: lightpink; color:red">{{value}}</td>
+                        {% else %}
+                            <td style="background-color: lightpink"></td>
+                        {% endif %}  
+                    {% else %}
+                        {% if original[i-1][j-1] != None %}
+                            <td>{{original[i-1][j-1]}}</td>
+                        {% elif "C" + i|string + j|string in revealed %}
+                            <td>{{data["C" + i|string + j|string]}}</td>
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            <td style="color:red">{{value}}</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+            <p hidden>{{revealed.append(key)}}</p>
+        {% endfor %}
+    </body>
+</html>

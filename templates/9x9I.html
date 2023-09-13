@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>9x9 Irregular Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <h1>9x9 Irregular Sudoku Solver</h1> 
+        <p>Input a number 1-9 in any square. Leave some of them blank.</p>
+        <p>Then declare the pattern of the board.</p>
+        <form action="/9x9I/solve" method="POST" autocomplete="off">
+            <table>
+                {% for i in "123456789" %}
+                    <tr>
+                        {% for j in "123456789" %}
+                            <td><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <h3>Groups, input A through I</h3>
+            <table>
+                {% for i in "123456789" %}
+                    <tr>
+                        {% for j in "123456789" %}
+                            <td><input type="text" size="1" name="C{{i}}{{j}}G"></input></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button class="test">Solve It!</button>
+        </form>
+    </body>
+</html>

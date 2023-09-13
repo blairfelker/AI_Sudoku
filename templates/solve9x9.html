@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>9x9 Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        {% set numArray = [1,2,3,4,5,6,7,8,9] %}
+        {% set revealed = [] %}
+        {% for key, value in data.items() %}
+            <p>{{key}} {{value}}</p>
+            <table>
+            {% for i in numArray %}
+                {% if i == 3 or i == 6 %}
+                    <tr class="box-bottom">
+                {% else %}
+                    <tr>
+                {% endif %}
+                    {% for j in numArray %}
+                        {% if original[i-1][j-1] != None %}
+                            {% if j == 3 or j == 6 %}
+                                <td class="box-side">{{original[i-1][j-1]}}</td>
+                            {% else %}
+                                <td>{{original[i-1][j-1]}}</td>
+                            {% endif %}
+                        {% elif "C" + i|string + j|string in revealed %}
+                            {% if j == 3 or j == 6 %}
+                                <td class="box-side">{{data["C" + i|string + j|string]}}</td>
+                            {% else %}
+                                <td>{{data["C" + i|string + j|string]}}</td>
+                            {% endif %}
+                        {% elif key[1]|int == i and key[2]|int == j %}
+                            {% if j == 3 or j == 6 %}
+                                <td style="color:red" class="box-side">{{value}}</td>
+                            {% else %}
+                                <td style="color:red">{{value}}</td>
+                            {% endif %}
+                        {% else %}
+                            {% if j == 3 or j == 6 %}
+                                <td class="box-side"></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+            <p hidden>{{revealed.append(key)}}</p>
+        {% endfor %}
+    </body>
+</html>

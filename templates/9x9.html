@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>9x9 Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <h1>9x9 Sudoku Solver</h1> 
+        <p>Input a number 1-9 in any square. Leave some of them blank.</p>
+        <form action="/9x9/solve" method="POST" autocomplete="off">
+            <table>
+                {% for i in "123456789" %}
+                    {% if i == "3" or i == "6" %}
+                        <tr class="box-bottom">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                        {% for j in "123456789" %}
+                            {% if j == "3" or j == "6" %}
+                                <td class="box-side"><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% else %}
+                                <td><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button class="test">Solve It!</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>6x6 Sudoku Solver</title>
+        <meta charset="utf8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <h1>6x6 Sudoku Solver</h1> 
+        <p>Input a number 1-6 in any square. Leave some of them blank.</p>
+        <form action="/6x6/solve" method="POST" autocomplete="off">
+            <table>
+                {% for i in "123456" %}
+                    {% if i == "2" or i == "4" %}
+                        <tr class="box-bottom">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                        {% for j in "123456" %}
+                            {% if j == "3" %}
+                                <td class="box-side"><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% else %}
+                                <td><input type="text" size="1" name="C{{i}}{{j}}"></input> </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <button class="test">Solve It!</button>
+        </form>
+    </body>
+</html>
